@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>String:</b>
+  <%= @ingredient.string %>
+</p>
+
+<p>
+  <b>Parent ingredient:</b>
+  <%= @ingredient.parent_ingredient %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @ingredient.description %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%= @ingredient.approved %>
+</p>
+
+<p>
+  <b>Submitted by:</b>
+  <%= @ingredient.submitted_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>

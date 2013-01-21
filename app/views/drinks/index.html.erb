@@ -1,0 +1,35 @@
+<h1>Listing drinks</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Instructions</th>
+    <th>Venue</th>
+    <th>Price</th>
+    <th>Submitted by</th>
+    <th>Approved</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drinks.each do |drink| %>
+  <tr>
+    <td><%= drink.name %></td>
+    <td><%= drink.description %></td>
+    <td><%= drink.instructions %></td>
+    <td><%= drink.venue_id %></td>
+    <td><%= drink.price %></td>
+    <td><%= drink.submitted_by %></td>
+    <td><%= drink.approved %></td>
+    <td><%= link_to 'Show', drink %></td>
+    <td><%= link_to 'Edit', edit_drink_path(drink) %></td>
+    <td><%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drink', new_drink_path %>
