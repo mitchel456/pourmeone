@@ -40,7 +40,6 @@ class DrinksController < ApplicationController
   # POST /drinks
   # POST /drinks.json
   def create
-    puts params.inspect
     @drink = Drink.new(params[:drink])
 
     respond_to do |format|
