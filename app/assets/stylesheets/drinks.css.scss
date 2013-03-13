@@ -1,3 +1,14 @@
 // Place all the styles related to the Drinks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ingredient-list {
+	list-style-type: none;
+	margin: 0;
+}
+
+ul.ingredient-list li  div button.close {
+	font-size: 30px;
+	margin-left: 10px;
+	line-height: 30px;
+}

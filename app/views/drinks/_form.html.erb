@@ -11,35 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :instructions %><br />
-    <%= f.text_area :instructions %>
-  </div>
-  <div class="field">
-    <%= f.label :venue_id %><br />
-    <%= f.number_field :venue_id %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :submitted_by %><br />
-    <%= f.number_field :submitted_by %>
-  </div>
-  <div class="field">
-    <%= f.label :approved %><br />
-    <%= f.check_box :approved %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <form>
+
+    <fieldset>
+      <legend>Submit a Drink</legend>
+      <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => 'span4' %>
+        <%= f.label :description %>
+        <%= f.text_area :description, :class => 'span4', :rows => '4' %>
+        <%= f.label :instructions %>
+        <%= f.text_area :instructions, :class => 'span4', :rows => '4' %>
+        <label>Ingredients</label>
+        <ul class='ingredient-list'>
+          <li id="ingredient"></li>
+        </ul>
+        <span class="clearfix help-block muted">Press Enter to add more ingredients</span>
+      </div>
+
+    </fieldset>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn' %>
+    </div>
+
+  </form>
+
+
 <% end %>
+
+<script type="text/template" class="di-template">
+<div class="clearfix">
+  [% if (raw_text === '') { %]
+    <input type="text" placeholder="1 oz Whiskey, etc" />
+  [% } else { %]
+    <input type="text" class="pull-left" value='[%= raw_text %]' />
+    <button class="close pull-left">&times;</button>
+  [% } %]
+</div>
+</script>
