@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
+//= require bootstrap
 //= require underscore
 //= require json2
-//= require backbone-min
+//= require backbone
+//= require backbone-relational
+//= require handlebars
+//= require jquery-ui-1.10.2.custom
+//= require admin
+//= require drinks
