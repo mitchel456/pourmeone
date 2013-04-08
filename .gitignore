@@ -17,3 +17,7 @@ pickle-email-*.html
 config/database.yml
 .sublime-workspace
 .sublime-project
+.DS_Store
+
+# Ignore application configuration
+/config/application.yml

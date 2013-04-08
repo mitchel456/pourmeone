@@ -1,9 +1,12 @@
 class DrinksController < ApplicationController
+
+  skip_before_filter :verify_authenticity_token, :only => [:create]
+
   # GET /drinks
   # GET /drinks.json
   def index
-    @drinks = Drink.all
-
+    @drinks = Drink.where(approved: true)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @drinks }
@@ -40,7 +43,19 @@ class DrinksController < ApplicationController
   # POST /drinks
   # POST /drinks.json
   def create
-    @drink = Drink.new(params[:drink])
+    @drink = Drink.create!(params[:drink].except(:ingredients, :venue))
+    @drink.approved = false
+
+    # process and attach the venue
+    @drink.venue = Venue.where(
+      source_id: params[:drink][:venue][:source_id], 
+      source: params[:drink][:venue][:source]
+    ).first_or_create(params[:drink][:venue])
+
+    # process and attach the ingredients
+    params[:drink][:ingredients].each do |ingredient_text|
+      @drink.drink_ingredients << DrinkIngredient.create(raw_text: ingredient_text)
+    end
 
     respond_to do |format|
       if @drink.save

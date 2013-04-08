@@ -11,13 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120204534) do
+ActiveRecord::Schema.define(:version => 20130404043600) do
 
   create_table "drink_ingredients", :force => true do |t|
     t.integer  "drink_id"
     t.integer  "ingredient_id"
-    t.integer  "unit_id"
-    t.float    "amount"
     t.string   "raw_text"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
@@ -31,8 +29,13 @@ ActiveRecord::Schema.define(:version => 20130120204534) do
     t.decimal  "price"
     t.integer  "submitted_by"
     t.boolean  "approved"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "filepicker_url"
   end
 
   create_table "ingredients", :force => true do |t|
@@ -43,6 +46,18 @@ ActiveRecord::Schema.define(:version => 20130120204534) do
     t.integer  "submitted_by"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "source_id"
+    t.string   "source"
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

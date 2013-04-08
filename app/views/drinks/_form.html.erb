@@ -18,6 +18,8 @@
       <div>
         <%= f.label :name %>
         <%= f.text_field :name, :class => 'span4' %>
+        <%= f.label :venue %>
+        <%= f.text_field :venue, :class => 'span4' %>
         <%= f.label :description %>
         <%= f.text_area :description, :class => 'span4', :rows => '4' %>
         <%= f.label :instructions %>
@@ -27,6 +29,8 @@
           <li id="ingredient"></li>
         </ul>
         <span class="clearfix help-block muted">Press Enter to add more ingredients</span>
+        <%= f.label :filepicker_url, "Upload a photo" %>
+        <%= f.filepicker_field :filepicker_url %>
       </div>
 
     </fieldset>

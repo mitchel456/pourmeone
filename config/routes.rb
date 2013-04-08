@@ -1,6 +1,12 @@
 Pourmeone::Application.routes.draw do
 
-  resources :ingredients, :drinks
+  # match 'admin' => 'admin#index'
+  match 'ingredients/autocomplete' => 'ingredients#autocomplete'
+
+  resources :ingredients, :drinks, :drink_ingredients, :admin
+
+
+  #match 'admin/drinks' => 'admin#drinks'
 
 
   # The priority is based upon order of creation:

@@ -75,5 +75,7 @@ module Pourmeone
             :request_specs => true
         g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
+
+    config.filepicker_rails.api_key = "A56OqiAniSsy4HQR0nVaaz"
   end
 end

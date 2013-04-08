@@ -1,5 +1,5 @@
 class DrinkIngredient < ActiveRecord::Base
-  attr_accessible :raw_text, :ingredient, :drink
+  attr_accessible :raw_text, :ingredient_id, :drink
 
   belongs_to :ingredient
   belongs_to :drink

@@ -10,6 +10,11 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def autocomplete
+    @ingredients = Ingredient.where("name ILIKE ?", "%#{params[:term]}%")
+    render json: @ingredients.map {|i| { label: i.name, value: i.id } }
+  end
+
   # GET /ingredients/1
   # GET /ingredients/1.json
   def show

@@ -1,0 +1,13 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.editable-text-cell input,
+.editable-text-cell.editing span {
+	display: none;
+}
+
+.editable-text-cell span,
+.editable-text-cell.editing input {
+	display: block;
+}
