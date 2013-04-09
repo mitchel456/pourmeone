@@ -2,10 +2,11 @@
 
 FactoryGirl.define do
   factory :drink_ingredient do
-    references ""
-    references ""
-    amount 1.5
-    references ""
-    raw_text nil
+    drink_id 1
+    ingredient_id 1
+    raw_text "1 oz Gin"
+    after(:create) do |drink_ingredient|
+      drink_ingredient.ingredient_id = create(:ingredient).id
+    end
   end
 end

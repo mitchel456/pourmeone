@@ -2,13 +2,12 @@
 
 FactoryGirl.define do
   factory :venue do
-    id ""
-    source_id "MyString"
-    source "MyString"
-    name "MyString"
-    address "MyString"
-    city "MyString"
-    state "MyString"
-    zip "MyString"
+    source_id "123456"
+    source "google"
+    name "The Bar"
+    address "123 Main St"
+    city "San Francisco"
+    state "CA"
+    zip "94118"
   end
 end

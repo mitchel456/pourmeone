@@ -2,18 +2,16 @@ require 'spec_helper'
 
 describe DrinkIngredient do
 
-  context '#parse' do
-  	it "saves the raw text" do
-  		DrinkIngredient.parse('1 oz bourbon').raw_text.should eq '1 oz bourbon'
-  	end
-
-  	it "extracts the correct ingredient, case-insensitively" do
-  	  @bourbon = FactoryGirl.create(:ingredient, name: 'Bourbon')
-  	  DrinkIngredient.parse('1 oz bourbon').ingredient.should eq @bourbon
-    end
-
-    it "returns a nil ingredient for an unparseable entry" do
-    	DrinkIngredient.parse('asdfasfasd').ingredient.should be_nil
-    end
+  it "has a valid factory" do
+    expect(create(:drink_ingredient)).to be_valid
   end
+
+  it "is invalid without a drink_id" do
+    expect(build(:drink_ingredient, drink_id: nil)).to be_invalid
+  end
+
+  it "is invalid without any raw text" do
+    expect(build(:drink_ingredient, raw_text: nil)).to be_invalid
+  end
+
 end
