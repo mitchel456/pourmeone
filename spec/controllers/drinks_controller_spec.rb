@@ -24,7 +24,7 @@ describe DrinksController do
   # Drink. As you add validations to Drink, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { :name => 'Old Fashioned' }
+    { name: 'Old Fashioned', approved: true, ingredients: { raw_text: '2 oz Whiskey' } }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -35,18 +35,59 @@ describe DrinksController do
   end
 
   describe "GET index" do
-    it "assigns all drinks as @drinks" do
-      drink = Drink.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:drinks).should eq([drink])
+
+    context "gets drinks based on approval status" do
+
+      before(:all) do
+        @approved = create(:drink)
+        @not_approved = create(:drink, approved: false)
+        @user = create(:user)
+        @admin = create(:user, admin: true)
+      end
+
+      it "assigns all approved drinks as @drinks if no user is signed in" do
+        get :index
+        assigns(:drinks).should eq([@approved])
+      end
+
+      it "assigns all approved drinks as @drinks if the signed-in user is not an admin" do
+        sign_in @user
+        get :index
+        assigns(:drinks).should eq([@approved])
+      end
+
+      it "assigns all drinks as @drinks if the signed-in user is an admin" do
+        sign_in @admin
+        get :index
+        assigns(:drinks).should eq([@approved, @not_approved])
+      end
+
+      after(:all) do
+        @approved.destroy
+        @not_approved.destroy
+        @user.destroy
+        @admin.destroy
+        Ingredient.delete_all
+      end
+    end
+
+    it "renders the :index view" do
+      get :index
+      expect(response).to render_template :index
     end
   end
 
   describe "GET show" do
     it "assigns the requested drink as @drink" do
-      drink = Drink.create! valid_attributes
+      drink = create(:drink)
       get :show, {:id => drink.to_param}, valid_session
       assigns(:drink).should eq(drink)
+    end
+
+    it "renders the :show template" do
+      drink = create(:drink)
+      get :show, id: drink
+      expect(response).to render_template :show
     end
   end
 
@@ -55,13 +96,24 @@ describe DrinksController do
       get :new, {}, valid_session
       assigns(:drink).should be_a_new(Drink)
     end
+
+    it "renders the :new template" do
+      get :new
+      expect(response).to render_template :new
+    end
   end
 
   describe "GET edit" do
     it "assigns the requested drink as @drink" do
-      drink = Drink.create! valid_attributes
+      drink = create(:drink)
       get :edit, {:id => drink.to_param}, valid_session
       assigns(:drink).should eq(drink)
+    end
+
+    it "renders the :edit template" do
+      drink = create(:drink)
+      get :edit, id: drink
+      expect(response).to render_template :edit
     end
   end
 
@@ -105,7 +157,7 @@ describe DrinksController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested drink" do
-        drink = Drink.create! valid_attributes
+        drink = create(:drink)
         # Assuming there are no other drinks in the database, this
         # specifies that the Drink created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -115,21 +167,21 @@ describe DrinksController do
       end
 
       it "assigns the requested drink as @drink" do
-        drink = Drink.create! valid_attributes
-        put :update, {:id => drink.to_param, :drink => valid_attributes}, valid_session
+        drink = create(:drink)
+        put :update, {:id => drink.to_param, :drink => valid_attributes.except(:ingredients)}, valid_session
         assigns(:drink).should eq(drink)
       end
 
       it "redirects to the drink" do
-        drink = Drink.create! valid_attributes
-        put :update, {:id => drink.to_param, :drink => valid_attributes}, valid_session
+        drink = create(:drink)
+        put :update, {:id => drink.to_param, :drink => valid_attributes.except(:ingredients)}, valid_session
         response.should redirect_to(drink)
       end
     end
 
     describe "with invalid params" do
       it "assigns the drink as @drink" do
-        drink = Drink.create! valid_attributes
+        drink = create(:drink)
         # Trigger the behavior that occurs when invalid params are submitted
         Drink.any_instance.stub(:save).and_return(false)
         put :update, {:id => drink.to_param, :drink => {}}, valid_session
@@ -137,7 +189,7 @@ describe DrinksController do
       end
 
       it "re-renders the 'edit' template" do
-        drink = Drink.create! valid_attributes
+        drink = create(:drink)
         # Trigger the behavior that occurs when invalid params are submitted
         Drink.any_instance.stub(:save).and_return(false)
         put :update, {:id => drink.to_param, :drink => {}}, valid_session
@@ -148,14 +200,14 @@ describe DrinksController do
 
   describe "DELETE destroy" do
     it "destroys the requested drink" do
-      drink = Drink.create! valid_attributes
+      drink = create(:drink)
       expect {
         delete :destroy, {:id => drink.to_param}, valid_session
       }.to change(Drink, :count).by(-1)
     end
 
     it "redirects to the drinks list" do
-      drink = Drink.create! valid_attributes
+      drink = create(:drink)
       delete :destroy, {:id => drink.to_param}, valid_session
       response.should redirect_to(drinks_url)
     end

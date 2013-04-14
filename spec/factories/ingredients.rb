@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :ingredient do
-    name "Gin"
+    sequence(:name) {|n| "Gin#{n}" }
     parent_ingredient nil
     description "A delicious ingredient"
     approved true

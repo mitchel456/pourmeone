@@ -5,7 +5,13 @@ class DrinksController < ApplicationController
   # GET /drinks
   # GET /drinks.json
   def index
-    @drinks = Drink.where(approved: true)
+
+    if current_user and current_user.admin?
+      @drinks = Drink.all
+    else
+      @drinks = Drink.where(approved: true)
+    end
+    # @drinks = current_user and current_user.admin? ? Drink.all : Drink.where(approved: true)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -43,29 +49,30 @@ class DrinksController < ApplicationController
   # POST /drinks
   # POST /drinks.json
   def create
-    @drink = Drink.create!(params[:drink].except(:ingredients, :venue))
+    @drink = Drink.create(params[:drink].except(:ingredients, :venue))
     @drink.approved = false
 
     # process and attach the venue
-    @drink.venue = Venue.where(
-      source_id: params[:drink][:venue][:source_id], 
-      source: params[:drink][:venue][:source]
-    ).first_or_create(params[:drink][:venue])
+    if params[:drink][:venue]
+      @drink.venue = Venue.where(
+        source_id: params[:drink][:venue][:source_id], 
+        source: params[:drink][:venue][:source]
+      ).first_or_create(params[:drink][:venue])
+    end
 
     # process and attach the ingredients
-    params[:drink][:ingredients].each do |ingredient_text|
-      @drink.drink_ingredients << DrinkIngredient.create(raw_text: ingredient_text)
-    end
-
-    respond_to do |format|
-      if @drink.save
-        format.html { redirect_to @drink, notice: 'Drink was successfully created.' }
-        format.json { render json: @drink, status: :created, location: @drink }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @drink.errors, status: :unprocessable_entity }
+    if params[:drink][:ingredients]
+      params[:drink][:ingredients].each do |ingredient_text|
+        @drink.drink_ingredients << DrinkIngredient.create(raw_text: ingredient_text)
       end
     end
+
+    if @drink.save
+      render json: @drink, status: :created, location: @drink
+    else
+      render json: @drink.errors, status: :unprocessable_entity
+    end
+
   end
 
   # PUT /drinks/1

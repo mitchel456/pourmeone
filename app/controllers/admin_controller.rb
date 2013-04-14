@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
 
+  before_filter :authenticate_admin
+
   def index
     @drinks = Drink.includes(:drink_ingredients)
     
@@ -22,6 +24,12 @@ class AdminController < ApplicationController
     	head :no_content
     else
     	render json: @drink.errors, status: :unprocessable_entity
+    end
+  end
+
+  def authenticate_admin
+    if !current_user or !current_user.admin?
+      render file: 'public/404.html', status: 404 and return
     end
   end
 

@@ -1,5 +1,7 @@
-<% content_for :javascript_includes do %>
-	<%= javascript_include_tag "drinks/index" %>
-<% end %>
-
 <%= render 'form' %>
+
+<script>
+  $(function() {
+    DrinkApp.start();
+  });
+</script>

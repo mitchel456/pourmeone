@@ -16,8 +16,11 @@
 //= require underscore
 //= require json2
 //= require backbone
+//= require backbone.marionette
 //= require backbone-relational
 //= require handlebars
 //= require jquery-ui-1.10.2.custom
-//= require admin
-//= require drinks
+//= require pmo_bootstrap
+//= require_tree ./admin
+//= require_tree ./drinks
+//= require_tree ../templates

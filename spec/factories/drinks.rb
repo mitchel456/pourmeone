@@ -3,6 +3,7 @@ FactoryGirl.define do
     f.name 'Martini'
     f.description 'The classic cocktail'
     f.instructions 'Shaken, not stirred'
+    f.approved true
     after(:create) do |member|
       member.drink_ingredients << create(:drink_ingredient, drink_id: member.id)
       member.drink_ingredients << create(:drink_ingredient, drink_id: member.id)

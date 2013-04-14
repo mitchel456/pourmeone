@@ -36,7 +36,7 @@ describe IngredientsController do
 
   describe "GET index" do
     it "assigns all ingredients as @ingredients" do
-      ingredient = Ingredient.create! valid_attributes
+      ingredient = create(:ingredient)
       get :index, {}, valid_session
       assigns(:ingredients).should eq([ingredient])
     end
@@ -44,7 +44,7 @@ describe IngredientsController do
 
   describe "GET show" do
     it "assigns the requested ingredient as @ingredient" do
-      ingredient = Ingredient.create! valid_attributes
+      ingredient = create(:ingredient)
       get :show, {:id => ingredient.to_param}, valid_session
       assigns(:ingredient).should eq(ingredient)
     end
@@ -73,15 +73,21 @@ describe IngredientsController do
         }.to change(Ingredient, :count).by(1)
       end
 
+      it "returns a 201 CREATED status" do
+        post :create, ingredient: valid_attributes
+        expect(response.response_code).to eq(201)
+      end
+
       it "assigns a newly created ingredient as @ingredient" do
         post :create, {:ingredient => valid_attributes}, valid_session
         assigns(:ingredient).should be_a(Ingredient)
         assigns(:ingredient).should be_persisted
       end
 
-      it "redirects to the created ingredient" do
-        post :create, {:ingredient => valid_attributes}, valid_session
-        response.should redirect_to(Ingredient.last)
+      it "will not create an ingredient with a duplicate name" do
+        create(:ingredient, name: 'Gin')
+        post :create, {:ingredient => { name: 'Gin' }}
+        expect(response.response_code).to eq(422)
       end
     end
 
@@ -97,7 +103,7 @@ describe IngredientsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Ingredient.any_instance.stub(:save).and_return(false)
         post :create, {:ingredient => {}}, valid_session
-        response.should render_template("new")
+        expect(response.response_code).to eq(422)
       end
     end
   end

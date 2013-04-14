@@ -1,5 +1,7 @@
 Pourmeone::Application.routes.draw do
 
+  devise_for :users
+
   # match 'admin' => 'admin#index'
   match 'ingredients/autocomplete' => 'ingredients#autocomplete'
 

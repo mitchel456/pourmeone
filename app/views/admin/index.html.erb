@@ -19,16 +19,8 @@
 	</div>
 </div>
 
-<script id="editable-text-cell" type="text/x-handlebars-template">
-	<span>{{ field }}</span>
-	<input type="text" value="{{ field }}" />
-</script>
-
-<script id="action-cell" type="text/x-handlebars-template">
-	<input type="button" value="{{ label }}" />
-</script>
-
-<script id="autocomplete-cell" type="text/x-handlebars-template">
-	<input type="hidden" class="ac-value" />
-	<input type="text" class="ac-display" />
+<script>
+	#(function() {
+		PMO.AdminApp.start();
+	});
 </script>
