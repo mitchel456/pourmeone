@@ -4,6 +4,7 @@ Pourmeone::Application.routes.draw do
 
   # match 'admin' => 'admin#index'
   match 'ingredients/autocomplete' => 'ingredients#autocomplete'
+  match 'venues/autocomplete' => 'venues#autocomplete'
 
   resources :ingredients, :drinks, :drink_ingredients, :admin
 
