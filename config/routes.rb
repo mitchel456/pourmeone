@@ -3,6 +3,8 @@ Pourmeone::Application.routes.draw do
   devise_for :users
 
   # match 'admin' => 'admin#index'
+  match 'test' => 'drinks#test'
+
   match 'ingredients/autocomplete' => 'ingredients#autocomplete'
   match 'venues/autocomplete' => 'venues#autocomplete'
 

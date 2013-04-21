@@ -6,6 +6,7 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'rest-client'
+gem 'foursquare2'
 gem 'figaro'
 gem 'pg'
 gem 'paperclip'
