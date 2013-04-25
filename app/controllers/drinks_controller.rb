@@ -6,16 +6,14 @@ class DrinksController < ApplicationController
   # GET /drinks.json
   def index
 
-    if current_user and current_user.admin?
-      @drinks = Drink.all
-    else
-      @drinks = Drink.where(approved: true)
+    @drinks = Drink.includes(:ingredients, :venue)
+    unless current_user and current_user.admin?
+      @drinks = @drinks.where(approved: true)
     end
-    # @drinks = current_user and current_user.admin? ? Drink.all : Drink.where(approved: true)
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @drinks }
+      format.json { render json: @drinks.to_json(include: [:ingredients, :venue], methods: :thumbnail_url) }
     end
   end
 

@@ -11,4 +11,8 @@ class Drink < ActiveRecord::Base
   	thumb: '100x100#',
   	medium: '200x200#'
   }
+
+  def thumbnail_url
+    image.url(:thumb)
+  end
 end

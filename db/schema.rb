@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410060435) do
+ActiveRecord::Schema.define(:version => 20130425014249) do
 
   create_table "drink_ingredients", :force => true do |t|
     t.integer  "drink_id"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20130410060435) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "filepicker_url"
   end
 
   create_table "ingredients", :force => true do |t|
