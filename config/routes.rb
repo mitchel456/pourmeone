@@ -6,9 +6,9 @@ Pourmeone::Application.routes.draw do
   match 'test' => 'drinks#test'
 
   match 'ingredients/autocomplete' => 'ingredients#autocomplete'
-  match 'venues/autocomplete' => 'venues#autocomplete'
+  # match 'venues/autocomplete' => 'venues#autocomplete'
 
-  resources :ingredients, :drinks, :drink_ingredients, :admin
+  resources :ingredients, :drinks, :drink_ingredients, :admin, :venues
 
 
   #match 'admin/drinks' => 'admin#drinks'

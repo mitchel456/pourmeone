@@ -2,7 +2,7 @@ require 'rest_client'
 
 class VenuesController < ApplicationController
 
-  def autocomplete
+  def index
     client = Foursquare2::Client.new(
       :client_id => ENV['FOURSQUARE_CLIENT_ID'],
       :client_secret => ENV['FOURSQUARE_CLIENT_SECRET']
@@ -15,7 +15,7 @@ class VenuesController < ApplicationController
       v: '20130304' # version string
     )
     json = results.venues.map do |place|
-      { value: place.id, label: place.name, source: 'foursquare' }
+      { id: place.id, name: place.name, source: 'foursquare' }
     end
     render json: json
   end
