@@ -208,3 +208,11 @@ ActiveAdmin.setup do |config|
 
 
 end
+
+module ActiveAdmin
+  class << self
+    def use_asset_pipeline?
+      true
+    end
+  end
+end

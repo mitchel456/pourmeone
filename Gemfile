@@ -6,6 +6,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0.rc1'
 
 gem 'devise',              github: 'plataformatec/devise',     branch: 'rails4'
+gem 'formtastic',           github: 'justinfrench/formtastic',  branch: 'rails4beta'
 gem 'responders',          github: 'plataformatec/responders'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'ransack',             github: 'ernie/ransack',            branch: 'rails-4'
@@ -21,7 +22,7 @@ gem 'aws-sdk'
 
 #gem "meta_search",    '>= 1.1.0.pre'
 
-# Use sqlite3 as the database for Active Record
+# Use postgres as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets

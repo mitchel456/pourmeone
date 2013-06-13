@@ -35,6 +35,14 @@ GIT
       responders (~> 1.0.0.rc)
 
 GIT
+  remote: git://github.com/justinfrench/formtastic.git
+  revision: 325282e64a897cd92c78d44d48726fe16486f84a
+  branch: rails4beta
+  specs:
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
   branch: rails4
@@ -135,8 +143,6 @@ GEM
       multi_json (~> 1.6)
       railties (>= 3.1.0, < 5.0)
     formatador (0.2.4)
-    formtastic (2.2.1)
-      actionpack (>= 3.0)
     foursquare2 (1.9.7)
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
@@ -293,6 +299,7 @@ DEPENDENCIES
   faker
   figaro
   filepicker-rails
+  formtastic!
   foursquare2
   growl
   guard
