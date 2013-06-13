@@ -205,14 +205,11 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
-
-
-end
-
-module ActiveAdmin
-  class << self
-    def use_asset_pipeline?
-      true
+  module ActiveAdmin
+    class << self
+      def use_asset_pipeline?
+        true
+      end
     end
   end
 end
