@@ -1,7 +1,7 @@
 class DrinkIngredient < ActiveRecord::Base
   #attr_accessible :raw_text, :ingredient_id, :drink
 
-  validates :raw_text, :drink_id, :presence => true
+  validates :raw_text, :presence => true
 
   belongs_to :ingredient
   belongs_to :drink

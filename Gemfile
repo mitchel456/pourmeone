@@ -3,14 +3,15 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0'
 
-gem 'devise',              github: 'plataformatec/devise',     branch: 'rails4'
-gem 'formtastic',           github: 'justinfrench/formtastic',  branch: 'rails4beta'
+gem 'devise',              github: 'plataformatec/devise'
 gem 'responders',          github: 'plataformatec/responders'
-gem 'inherited_resources', github: 'josevalim/inherited_resources'
+
+gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 gem 'ransack',             github: 'ernie/ransack',            branch: 'rails-4'
-gem 'activeadmin',         github: 'akashkamboj/active_admin', branch: 'rails4'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'formtastic',           github: 'justinfrench/formtastic'
 
 gem 'filepicker-rails'
 gem 'rest-client'
