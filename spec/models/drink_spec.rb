@@ -3,11 +3,11 @@ require 'spec_helper'
 describe Drink do
 
   it "can be created" do
-    Drink.new(name: 'Martini').should be_valid
+    expect(Drink.new(name: 'Martini')).to be_valid
   end
 
   it "is invalid without a name" do
-    Drink.new.should be_invalid
+    expect(Drink.new).to have(1).errors_on(:name)
   end
 
 end

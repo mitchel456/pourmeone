@@ -1,1 +1,5 @@
-<h3>Home!</h3>
+<form class="form-search">
+  <input type="text" class="input-medium search-query" />
+  <button type="submit" class="btn">Search</button>
+</form>
+<%= render partial: 'drinks/drink', collection: @recent_drinks %>

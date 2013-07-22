@@ -157,6 +157,7 @@ GEM
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (>= 1.0, < 3.0.0)
+    geocoder (1.1.8)
     growl (1.0.3)
     guard (1.8.1)
       formatador (>= 0.2.4)
@@ -315,6 +316,7 @@ DEPENDENCIES
   filepicker-rails
   formtastic!
   foursquare2
+  geocoder
   growl
   guard
   guard-rspec

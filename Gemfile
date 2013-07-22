@@ -8,6 +8,7 @@ gem 'rails', '4.0.0'
 gem 'devise',              github: 'plataformatec/devise'
 gem 'responders',          github: 'plataformatec/responders'
 
+# Active Admin gems
 gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 gem 'ransack',             github: 'ernie/ransack',            branch: 'rails-4'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
@@ -21,7 +22,7 @@ gem 'pg'
 gem 'paperclip'
 gem 'aws-sdk'
 
-#gem "meta_search",    '>= 1.1.0.pre'
+gem 'geocoder'
 
 # Use postgres as the database for Active Record
 gem 'pg'
