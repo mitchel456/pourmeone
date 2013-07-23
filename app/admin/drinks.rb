@@ -4,7 +4,7 @@ ActiveAdmin.register Drink do
     f.inputs 'Drink' do
       f.input :name
       f.input :venue
-      f.input :approved
+      f.input :approved, as: :boolean, input_html: { checked: 'checked' }
       f.has_many :drink_ingredients do |di|
         di.inputs 'Ingredients' do
           di.input :raw_text
