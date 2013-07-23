@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130722030404) do
+ActiveRecord::Schema.define(version: 20130723045535) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "resource_id",   null: false
@@ -73,12 +73,12 @@ ActiveRecord::Schema.define(version: 20130722030404) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
-    t.integer  "parent_ingredient"
+    t.integer  "parent_ingredient_id"
     t.text     "description"
     t.boolean  "approved"
     t.integer  "submitted_by"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: true do |t|

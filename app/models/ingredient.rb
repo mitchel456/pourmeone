@@ -3,5 +3,5 @@ class Ingredient < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => true
 
-  belongs_to :parent_ingredient, class_name: 'Ingredient', foreign_key: 'parent_ingredient'
+  belongs_to :parent_ingredient, class_name: 'Ingredient'
 end
