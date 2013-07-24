@@ -2,3 +2,4 @@
   <%= f.text_field :name_or_ingredients_name_cont %>
   <%= f.submit "Search" %>
 <% end %>
+<%= render partial: 'drinks/drink', collection: @drinks %>
