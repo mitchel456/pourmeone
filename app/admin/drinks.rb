@@ -1,9 +1,5 @@
 ActiveAdmin.register Drink do
 
-  action_item do
-    link_to "New Drink", new_admin_drink_path
-  end
-
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Drink' do
       f.input :name

@@ -31,12 +31,12 @@ describe DrinksController do
   describe "ordering by distance" do
 
     before(:all) do
-      @middle_drink = create(:drink, venue: create(:middle_venue))
-      @far_drink = create(:drink, venue: create(:far_venue))
-      @near_drink = create(:drink, venue: create(:near_venue))
+      @middle_drink = create(:drink, id: 1, name: 'Appletini', venue: create(:middle_venue))
+      @far_drink = create(:drink, id: 2, name: 'Bitters and Vodka', venue: create(:far_venue))
+      @near_drink = create(:drink, id: 3, name: 'Curacao Punch', venue: create(:near_venue))
     end
 
-    it "assigns drinks ordered by id if lat/lon are absent" do
+    it "assigns drinks ordered by name if lat/lon are absent" do
       get :index
       expect(assigns(:drinks)).to eq [@middle_drink, @far_drink, @near_drink]
     end

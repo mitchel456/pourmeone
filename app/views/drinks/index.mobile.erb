@@ -1,5 +1,6 @@
 <%= search_form_for @search do |f| %>
   <%= f.search_field :name_or_ingredients_name_cont %>
-  <%= f.submit "Search" %>
 <% end %>
-<%= render partial: 'drinks/drink', collection: @drinks %>
+<ul data-role="listview">
+  <%= render partial: 'drinks/drink', collection: @drinks %>
+</ul>

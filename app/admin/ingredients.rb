@@ -1,9 +1,5 @@
 ActiveAdmin.register Ingredient do
 
-  action_item do
-    link_to "New Ingredient", new_admin_ingredient_path
-  end
-
   form html: { enctype: 'multipart/form-data' } do |f|
     f.inputs 'Ingredient' do
       f.input :name
