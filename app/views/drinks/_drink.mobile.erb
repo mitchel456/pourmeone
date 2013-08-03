@@ -2,5 +2,8 @@
   <a href="/drinks/<%= drink.id %>">
     <%= filepicker_image_tag drink.filepicker_url, w: 100, h: 100, fit: 'crop' %>
     <%= drink.name %>
+    <% if drink.distance %>
+      <p><%= "%.1f" % drink.distance %> miles away</p>
+    <% end %>
   </a>
 </li>

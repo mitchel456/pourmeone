@@ -1,5 +1,6 @@
 class Drink < ActiveRecord::Base
-  #attr_accessible :approved, :name, :description, :instructions, :price, :image, :venue
+
+  attr_accessor :distance
 
   validates :name, :presence => true
 
