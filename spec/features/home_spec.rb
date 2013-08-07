@@ -10,7 +10,7 @@ describe 'searching from the home page' do
 
   it 'should display the results on the drink index' do
     visit '/'
-    fill_in 'q_name_or_ingredients_name_cont', :with => 'Whiskey'
+    fill_in 'q_' + Drink.ransack_search_token.to_s, :with => 'Whiskey'
     click_on 'Search'
 
     page.should have_content 'Whiskey Sour'

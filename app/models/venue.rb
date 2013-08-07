@@ -1,4 +1,5 @@
 class Venue < ActiveRecord::Base
+  include Geocodable
 
   validates :name, :presence => true
   has_many :drinks

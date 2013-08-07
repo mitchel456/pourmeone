@@ -17,15 +17,29 @@ describe DrinksController do
       end
 
       it "assigns drinks filtered by name if a query is specified" do
-        get :index, q: { name_or_ingredients_name_cont: 'martini' }
+        get :index, q: { name_or_ingredients_name_or_ingredients_parent_ingredient_name_cont: 'martini' }
         expect(assigns(:drinks)).to match_array [@martini]
       end
 
       it "assigns drinks filtered by ingredient if a query is specified" do
         vermouth = create(:ingredient, name: 'Vermouth')
         @manhattan.ingredients << vermouth
-        get :index, q: { name_or_ingredients_name_cont: 'vermouth' }
+        get :index, q: { name_or_ingredients_name_or_ingredients_parent_ingredient_name_cont: 'vermouth' }
         expect(assigns(:drinks)).to match_array [@manhattan]
+      end
+
+      it "will find drinks with matching parent ingredients" do
+
+        whiskey = create(:ingredient, name: 'Whiskey')
+        bourbon = create(:ingredient, name: 'Bourbon', parent_ingredient: whiskey)
+
+        bourbon_drink = create(:drink, name: 'Bourbon Drink')
+        whiskey_drink = create(:drink, name: 'Whiskey Drink')
+        bourbon_drink.ingredients << bourbon
+        whiskey_drink.ingredients << whiskey
+
+        get :index, q: { name_or_ingredients_name_or_ingredients_parent_ingredient_name_cont: 'Whiskey' }
+        expect(assigns(:drinks)).to match_array [whiskey_drink, bourbon_drink]
       end
 
     end
@@ -68,7 +82,5 @@ describe DrinksController do
     end
 
   end
-
-
 
 end

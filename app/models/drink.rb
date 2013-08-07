@@ -1,6 +1,5 @@
 class Drink < ActiveRecord::Base
-
-  attr_accessor :distance
+  include Geocodable
 
   validates :name, :presence => true
 
@@ -17,5 +16,13 @@ class Drink < ActiveRecord::Base
 
   def thumbnail_url
     image.url(:thumb)
+  end
+
+  def locate_by
+    venue
+  end
+
+  def self.ransack_search_token
+    :name_or_ingredients_name_or_ingredients_parent_ingredient_name_cont
   end
 end

@@ -11,8 +11,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div data-role="page">
+  <div data-role="header">
+    <a href="/" data-icon="home">Home</a>
+    <h1>Pour Me One</h1>
+  </div>
+  <div data-role="content">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

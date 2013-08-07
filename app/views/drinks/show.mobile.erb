@@ -1,1 +1,9 @@
-<h1><%= @drink.name %></h1>
+<h3><%= @drink.name %></h3>
+<ul data-role="listview" data-inset="true">
+  <li><%= link_to @drink.venue.name, @drink.venue %></li>
+</ul>
+<ul class="ingredient-list">
+  <% @drink.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ul>

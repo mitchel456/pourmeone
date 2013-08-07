@@ -1,7 +1,8 @@
-<li>
+<li class="drink-row">
   <a href="/drinks/<%= drink.id %>">
     <%= filepicker_image_tag drink.filepicker_url, w: 100, h: 100, fit: 'crop' %>
-    <%= drink.name %>
+    <h4 class="name"><%= drink.name %></h4>
+    <span class="venue"><%= drink.venue.name if drink.venue %></span>
     <% if drink.distance %>
       <p><%= "%.1f" % drink.distance %> miles away</p>
     <% end %>

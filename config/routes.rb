@@ -8,6 +8,7 @@ Pourmeone::Application.routes.draw do
   root 'home#index'
 
   resources :drinks
+  resources :venues
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
