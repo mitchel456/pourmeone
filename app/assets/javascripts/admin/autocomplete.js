@@ -4,13 +4,13 @@ $(function() {
     $.each($('select'), function(index, select) {
       var combobox = $('<input/>'),
           hidden = $('<input/>', { type: 'hidden', name: $(select).attr('name') }),
-          currentValue = $(select).find(':selected').text();
-      options = $.map(select, function(option) {
-        return {
-          label: option.label,
-          value: option.value
-        }
-      });
+          currentValue = $(select).find(':selected').text(),
+          options = $.map(select, function(option) {
+            return {
+              label: option.label,
+              value: option.value
+            }
+          });
       combobox.autocomplete({
         source: $.map(options, function(option) { return option.label }),
         select: function(event, ui) {
