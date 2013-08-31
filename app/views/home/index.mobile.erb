@@ -2,7 +2,8 @@
   <p>What'll you have?</p>
   <%= f.search_field Drink.ransack_search_token, placeholder: 'whiskey, gin, etc.' %>
 <% end %>
+<p>Nearby venues:</p>
 <ul data-role="listview">
-  <%= render partial: 'drinks/drink', collection: @recent_drinks %>
+  <%= render partial: 'venues/venue', collection: @nearby_venues %>
 </ul>
 

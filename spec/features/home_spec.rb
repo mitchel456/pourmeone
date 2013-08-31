@@ -1,5 +1,13 @@
 require 'spec_helper'
 
+describe 'the home page' do
+
+  it 'displays the nearest five venues' do
+
+  end
+
+end
+
 describe 'searching from the home page' do
 
   before(:each) do

@@ -1,0 +1,14 @@
+<li class="venue-row">
+  <a href="/venues/<%= venue.id %>">
+    <% unless venue.image_url.blank? %>
+    <%= image_tag venue.image_url, w: 80, h: 80, fit: 'crop' %>
+    <% else %>
+      <%= image_tag('default_drink.png') %>
+    <% end %>
+    <h3 class="name"><%= venue.name %></h3>
+    <%= image_tag venue.rating_image_url %>
+    <h4 class="venue">
+      <%= '(' + "%.1f" % venue.distance + ' miles away)' if venue.distance %>
+    </h4>
+  </a>
+</li>

@@ -10,7 +10,7 @@ gem 'responders',          github: 'plataformatec/responders'
 
 # Active Admin gems
 gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
-gem 'ransack',             github: 'ernie/ransack',            branch: 'rails-4'
+gem 'ransack'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',           github: 'justinfrench/formtastic'
 
