@@ -1,3 +1,35 @@
 // Place all the styles related to the Drinks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item-header {
+  min-height: 112px;
+}
+
+div.ui-content a.item-thumb {
+  img {
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 2px #ccc;
+    float: right;
+  }
+}
+
+.drink-row {
+  h3 {
+    margin: 0;
+    line-height: 1.4em;
+  }
+  h4 {
+    font-size: 14px;
+    line-height: 1.2em;
+    margin: .2em 0;
+    font-weight: normal;
+  }
+  .ingredients {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: normal;
+  }
+}

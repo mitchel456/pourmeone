@@ -1,5 +1,14 @@
-<h3><%= @venue.name %></h3>
-<%= link_to 'Directions', 'http://maps.apple.com/maps?daddr=156+2nd+St,+San+Francisco,+CA', target: '_blank' %>
+<div class="item-header">
+  <a href="http://maps.google.com/maps?daddr=<%= @venue.full_address %>&saddr=" target="_blank" class="item-thumb">
+    <%= image_tag 'http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' + @venue.latitude.to_s + ',' + @venue.longitude.to_s + '&scale=1&zoom=14&sensor=true&size=100x100&center=' + @venue.latitude.to_s + ',' + @venue.longitude.to_s %>
+  </a>
+  <h3 class="venue-name"><%= @venue.name %></h3>
+  <%= image_tag @yelp_venue.star_rating_url %>
+  <p>
+    <%= @venue.address %><br />
+    <%= @venue.city %>, <%= @venue.state %>
+  </p>
+</div>
 
 <ul data-role="listview" data-inset="true">
   <% @venue.drinks.each do |drink| %>

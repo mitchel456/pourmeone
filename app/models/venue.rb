@@ -7,7 +7,7 @@ class Venue < ActiveRecord::Base
   after_validation :geocode
 
   def full_address
-    [address, city, state].join(',')
+    [address, city, state].join(', ')
   end
 
 end

@@ -14,6 +14,7 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
+    @yelp_venue = YelpBusiness.new(@venue.yelp_id)
   end
 
 end

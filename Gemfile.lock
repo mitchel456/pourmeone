@@ -209,6 +209,7 @@ GEM
     multipart-post (1.2.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    oauth (0.4.7)
     orm_adapter (0.4.0)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
@@ -325,6 +326,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   launchy
+  oauth
   paperclip
   pg
   rails (= 4.0.0)
