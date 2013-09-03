@@ -5,13 +5,13 @@
   <h3 class="venue-name"><%= @venue.name %></h3>
   <%= image_tag @venue.rating_image_url %>
   <p>
+    <%= link_to 'Read Reviews', "http://www.yelp.com/biz/#{@venue.yelp_id}" %><br />
     <%= @venue.address %><br />
     <%= @venue.city %>, <%= @venue.state %>
   </p>
 </div>
 
+<h4>Cocktail Menu</h4>
 <ul data-role="listview" data-inset="true">
-  <% @venue.drinks.each do |drink| %>
-  <li><%= link_to drink.name, drink %></li>
-  <% end %>
+  <%= render partial: 'drinks/drink', collection: @venue.drinks, locals: { show_venue: false } %>
 </ul>

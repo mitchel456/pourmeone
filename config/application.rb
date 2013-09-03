@@ -28,3 +28,5 @@ module Pourmeone
     config.filepicker_rails.api_key = 'A56OqiAniSsy4HQR0nVaaz'
   end
 end
+
+HandlebarsAssets::Config.template_namespace = 'JST'

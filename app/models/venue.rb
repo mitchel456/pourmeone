@@ -30,7 +30,11 @@ class Venue < ActiveRecord::Base
   def get_yelp_data
     consumer = OAuth::Consumer.new(ENV['YELP_CONSUMER_KEY'], ENV['YELP_CONSUMER_SECRET'], {:site => "http://api.yelp.com"})
     access_token = OAuth::AccessToken.new(consumer, ENV['YELP_ACCESS_KEY'], ENV['YELP_ACCESS_SECRET'])
-    JSON.parse(access_token.get("/v2/business/#{yelp_id}").body)
+    begin
+      JSON.parse(access_token.get("/v2/business/#{yelp_id}").body)
+    rescue
+      {}
+    end
   end
 
 end

@@ -2,4 +2,4 @@
   <%= f.search_field Drink.ransack_search_token %>
   <%= f.submit "Search" %>
 <% end %>
-<%= render partial: 'drinks/drink', collection: @drinks %>
+<%= render partial: 'drinks/drink', collection: @drinks, locals: { show_venue: true } %>

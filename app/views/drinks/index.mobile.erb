@@ -2,5 +2,5 @@
   <%= f.search_field Drink.ransack_search_token %>
 <% end %>
 <ul data-role="listview">
-  <%= render partial: 'drinks/drink', collection: @drinks %>
+  <%= render partial: 'drinks/drink', collection: @drinks, locals: { show_venue: true } %>
 </ul>

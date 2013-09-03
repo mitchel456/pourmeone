@@ -16,4 +16,7 @@
 //= require underscore
 //= require json2
 //= require backbone
+//= require backbone.marionette
+//= require handlebars.runtime
+//= require_tree ./models
 //= require_tree .

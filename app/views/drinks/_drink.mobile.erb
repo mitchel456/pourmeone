@@ -6,10 +6,12 @@
       <%= image_tag('default_drink.png') %>
     <% end %>
     <h3 class="name"><%= drink.name %></h3>
+    <% if show_venue %>
     <h4 class="venue">
       <%= drink.venue.name if drink.venue %>
       <%= '(' + "%.1f" % drink.distance + ' miles away)' if drink.distance %>
     </h4>
+     <% end %>
     <p class="ingredients"><%= drink.ingredients.pluck(:name).join(', ') %></p>
   </a>
 </li>
