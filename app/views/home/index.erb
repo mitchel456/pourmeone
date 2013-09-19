@@ -1,5 +1,38 @@
 <%= search_form_for @search do |f| %>
-  <%= f.search_field Drink.ransack_search_token %>
-  <%= f.submit "Search" %>
+  <h4>What'll you have?</h4>
+  <%= f.search_field Drink.ransack_search_token, placeholder: 'whiskey, gin, etc.' %>
 <% end %>
-<%= render partial: 'drinks/drink', collection: @recent_drinks, locals: { show_venue: true } %>
+
+
+  <h4>Nearby venues:<%= image_tag 'Powered_By_Yelp_Black.png', style: 'float:right' %></h4>
+
+
+
+<div style="padding-top:15px">
+  <ul id="venue-list"></ul>
+</div>
+
+
+<script>
+  $(function() {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+
+          // now that we have position, fetch nearby venues
+          var venueCollection = new PMO.VenueCollection();
+          var venueCollectionView = new PMO.VenueCollectionView({
+              collection: venueCollection,
+              el: '#venue-list'
+          });
+          venueCollection.fetch({ data: {
+              lat: pos.coords.latitude,
+              lon: pos.coords.longitude
+          }, success: function() {
+              $('#venue-list').listview()
+          }});
+
+          var drinkForm = $('form#drink_search');
+          drinkForm.append('<input type="hidden" name="lat" value="' + pos.coords.latitude + '" />');
+          drinkForm.append('<input type="hidden" name="lon" value="' + pos.coords.longitude + '" />');
+      });
+  })
+</script>

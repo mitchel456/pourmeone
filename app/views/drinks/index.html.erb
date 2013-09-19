@@ -1,5 +1,0 @@
-<%= search_form_for @search do |f| %>
-  <%= f.search_field Drink.ransack_search_token %>
-  <%= f.submit "Search" %>
-<% end %>
-<%= render partial: 'drinks/drink', collection: @drinks, locals: { show_venue: true } %>
