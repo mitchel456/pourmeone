@@ -28,3 +28,15 @@
 // .active_admin       applies to any Active Admin namespace
 // .admin_namespace    applies to the admin namespace (eg: /admin)
 // .other_namespace    applies to a custom namespace named other (eg: /other)
+.active_admin {
+  .drink-ingredient-row {
+    margin-left: 20%;
+    line-height: 24px;
+  }
+  .ingredient-name {
+    display: inline-block;
+    width: 170px;
+    text-overflow: ellipsis;
+  }
+}
+

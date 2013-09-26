@@ -1,20 +1,12 @@
 ActiveAdmin.register Drink do
 
-  form html: { enctype: 'multipart/form-data' } do |f|
-    f.inputs 'Drink' do
-      f.input :name
-      f.input :venue
-      f.input :approved, as: :boolean, input_html: { checked: 'checked' }
-      f.has_many :drink_ingredients do |di|
-        di.inputs 'Ingredients' do
-          di.input :raw_text
-          di.input :ingredient
-          di.input :drink_id, :as => :hidden
-        end
-      end
-      f.input :filepicker_url, as: 'filepicker'
-      f.actions
-    end
+  form :partial => 'form'
+
+  index do
+    column :name
+    column :venue
+    column :price
+    actions
   end
 
   show do
@@ -23,6 +15,25 @@ ActiveAdmin.register Drink do
   end
 
   controller do
+
+    def update
+      @drink = Drink.find(params[:id])
+      # remove all ingredients in preparation for re-adding them next
+      @drink.drink_ingredients.delete_all
+      # add or create ingredients as necessary
+      permitted_params[:ingredients].each do |drink_ingredient|
+        if drink_ingredient[:id].empty?
+          ingredient = Ingredient.create(name: drink_ingredient[:name])
+        else
+          ingredient = Ingredient.find(drink_ingredient[:id])
+        end
+        @drink.ingredients << ingredient
+      end
+      @drink.update_attributes(permitted_params[:drink])
+      @drink.save
+      redirect_to [:admin, @drink]
+    end
+
     def permitted_params
       params.permit!
     end

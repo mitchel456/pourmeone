@@ -4,7 +4,8 @@ $(function() {
     $.each($('select'), function(index, select) {
       var combobox = $('<input/>'),
           hidden = $('<input/>', { type: 'hidden', name: $(select).attr('name') }),
-          currentValue = $(select).find(':selected').text(),
+          currentText = $(select).find(':selected').text(),
+          currentValue = $(select).find(':selected').val(),
           options = $.map(select, function(option) {
             return {
               label: option.label,
@@ -23,8 +24,11 @@ $(function() {
           hidden.val(id);
         }
       });
+      if (currentText) {
+        combobox.val(currentText);
+      }
       if (currentValue) {
-        combobox.val(currentValue);
+          hidden.val(currentValue);
       }
       combobox.insertAfter(select);
       hidden.insertAfter(select);

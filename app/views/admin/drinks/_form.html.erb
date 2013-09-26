@@ -1,0 +1,26 @@
+<%= semantic_form_for [:admin, @drink], html: { enctype: 'multipart/form-data' } do |f| %>
+    <%= f.inputs do %>
+        <%= f.input :name %>
+        <%= f.input :venue %>
+        <li class="select input" id="new-ingredients"></li>
+        <li class="select input">
+          <label>Drink Photo</label>
+          <input type="filepicker" name="drink[filepicker_url]" />
+        </li>
+    <% end %>
+    <%= f.actions %>
+<% end %>
+
+<script>
+   $(function() {
+      new PMO.DrinkIngredientsView({
+        el: '#new-ingredients',
+        collection: new PMO.DrinkIngredientCollection(<%= @drink.drink_ingredients.map do |di|
+            { id: di.id, ingredient_id: di.ingredient.id, ingredient_name: di.ingredient.name }
+        end.to_json.html_safe %>),
+        ingredientSource: <%= Ingredient.all.map do |i|
+            { value: i.id, label: i.name }
+        end.to_json.html_safe %>
+      }).render();
+   });
+</script>

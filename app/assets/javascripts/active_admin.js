@@ -1,3 +1,12 @@
 //= require active_admin/base
 //= require admin/filepicker
 //= require admin/autocomplete
+//= require underscore
+//= require json2
+//= require backbone
+//= require backbone.marionette
+//= require handlebars.runtime
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./templates
+//= require_tree ./views
