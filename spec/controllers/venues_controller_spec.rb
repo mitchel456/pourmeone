@@ -6,14 +6,8 @@ describe VenuesController do
     Venue.delete_all
   end
 
-  describe 'GET #index' do
-
-    xit "populates an array of venues" do
-      venue = FactoryGirl.create(:venue)
-      get :index
-      expect(assigns(:venues)).to match_array [venue]
-    end
-
+  after(:each) do
+    Venue.delete_all
   end
 
   describe 'GET #show' do

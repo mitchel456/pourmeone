@@ -1,13 +1,5 @@
 require 'spec_helper'
 
-describe 'the home page' do
-
-  it 'displays the nearest five venues' do
-
-  end
-
-end
-
 describe 'searching from the home page' do
 
   before(:each) do
@@ -16,10 +8,10 @@ describe 'searching from the home page' do
     create(:martini)
   end
 
-  it 'should display the results on the drink index' do
+  it 'should display the results on the drink index', js: true do
     visit '/'
-    fill_in 'q_' + Drink.ransack_search_token.to_s, :with => 'Whiskey'
-    click_on 'Search'
+    fill_in 'q_' + Drink.ransack_search_token.to_s, :with => "Whiskey"
+    find('#q_' + Drink.ransack_search_token.to_s).native.send_keys(:return)
 
     page.should have_content 'Whiskey Sour'
     page.should have_content 'Manhattan'

@@ -9,7 +9,7 @@ gem 'devise',              github: 'plataformatec/devise'
 gem 'responders',          github: 'plataformatec/responders'
 
 # Active Admin gems
-gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+gem 'activeadmin',         github: 'gregbell/active_admin'
 gem 'ransack'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',           github: 'justinfrench/formtastic'
@@ -60,6 +60,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'poltergeist'
   gem 'factory_girl_rails'
   gem 'guard'
   gem 'growl'

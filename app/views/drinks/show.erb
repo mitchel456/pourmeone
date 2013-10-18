@@ -1,7 +1,13 @@
 <div class="item-header">
-  <a href="#drink-image" data-rel="popup" class="item-thumb">
-    <%= filepicker_image_tag @drink.filepicker_url, w: 100, h: 100, fit: 'crop' %>
-  </a>
+  <% unless @drink.filepicker_url.blank? %>
+    <a href="#drink-image" data-rel="popup" class="item-thumb">
+      <%= filepicker_image_tag @drink.filepicker_url, w: 100, h: 100, fit: 'crop' %>
+    </a>
+  <% else %>
+    <a class="item-thumb needs-image">
+      <%= image_tag('default_drink.png', size: '100x100') %>
+    </a>
+  <% end %>
   <h3 class="drink-name"><%= @drink.name %></h3>
 </div>
 
@@ -9,11 +15,7 @@
   <li><%= link_to @drink.venue.name, @drink.venue %></li>
 </ul>
 
-<ul class="ingredient-list">
-  <% @drink.ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
-  <% end %>
-</ul>
+<p class="ingredient-list"><%= @drink.ingredients.pluck(:name).join(', ') %></p>
 
 <div data-role="popup" id="drink-image">
   <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>

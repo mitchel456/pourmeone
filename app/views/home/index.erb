@@ -3,15 +3,11 @@
   <%= f.search_field Drink.ransack_search_token, placeholder: 'whiskey, gin, etc.' %>
 <% end %>
 
-
-  <h4>Nearby venues:<%= image_tag 'Powered_By_Yelp_Black.png', style: 'float:right' %></h4>
-
-
+<h4>Nearby venues:<%= image_tag 'Powered_By_Yelp_Black.png', style: 'float:right' %></h4>
 
 <div style="padding-top:15px">
   <ul id="venue-list"></ul>
 </div>
-
 
 <script>
   $(function() {
