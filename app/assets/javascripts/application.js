@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require underscore
 //= require json2
+//= require bootstrap
 //= require backbone
 //= require backbone.marionette
 //= require handlebars.runtime

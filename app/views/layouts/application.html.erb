@@ -2,28 +2,20 @@
 <html>
 <head>
   <title>Pour Me One</title>
-  <meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
-  <!-- width=device-width causes the iPhone 5 to letterbox the app, so
-      we want to exclude it for iPhone 5 to allow full screen apps -->
-  <meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" />
-  <!-- provide the splash screens for iPhone 5 and previous -->
-  <link href="assets/splashs/splash_1096.png" rel="apple-touch-startup-image" media="(device-height: 568px)">
-  <link href="assets/splashs/splash_iphone_2x.png" rel="apple-touch-startup-image" sizes="640x960" media="(device-height: 480px)">
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application-desktop", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
   <%= csrf_meta_tags %>
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <%= render 'layouts/analytics' %>
 </head>
 <body>
-<div data-role="page" data-add-back-btn="true">
-  <div data-role="header" data-position="fixed">
-    <a href="/" data-rel="back">Back</a>
-    <h1>Pour Me One</h1>
-  </div>
-  <div data-role="content">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Pour Me One</a>
+    </div>
+  </nav>
+  <div class="body">
     <%= yield %>
   </div>
 </div>
