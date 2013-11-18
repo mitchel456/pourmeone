@@ -1,0 +1,33 @@
+
+
+a {
+	color: #555;
+}
+
+a:hover {
+	color: #777;
+	text-decoration: none;
+}
+
+ .header {
+ 	padding: 15px;
+ }
+
+ h1, h2, h3, h4 {
+ 	font-family: 'Roboto Slab', serif;
+ }
+
+ h4 {
+ 	font-size: 1.6em;
+ }
+
+ .pagination .active span,
+ .pagination .active span:hover {
+	background-color: #7BB38E;
+	border-color: #7BB38E;
+ }
+
+// disable border on loading image
+div.ui-loader {
+	border: none;
+}

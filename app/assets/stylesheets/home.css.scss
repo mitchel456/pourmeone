@@ -9,3 +9,69 @@
 .ui-listview .ui-link-inherit {
   padding-left:90px;
 }
+
+ @mixin shadowed-box {
+	background-color: #fff;
+	box-shadow: 2px 2px 2px #ccc;
+	border: 1px solid #ccc;
+	padding: 10px;
+	h1, h2, h3, h4 {
+		margin-top: 0;
+	}
+}
+
+
+.hero {
+	@include shadowed-box;
+	padding: 25px;
+	.btn {
+		margin-left: 5px;
+		margin-top: -6px;
+		line-height: 1.4em;
+	}
+	h4 {
+		margin: 1.1em 0;
+	}
+	input {
+		font-size: 1.4em;
+	}
+	.search, .description {
+		float: left;
+		width: 50%;
+	}
+}
+
+.venue-heading {
+	padding: 0 17px;
+	margin: 20px 0 15px 0;
+}
+
+.venue-detail {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	.inner {
+		@include shadowed-box;
+	}
+	.thumbnail {
+		float: left;
+		margin-right: 10px;
+		margin-bottom: 0;
+	}
+	h4 {
+		margin-top: 0;
+	}
+	.yelp-ratings {
+		font-size: 0.8em;
+	}
+} 
+
+.jumbotron .drink_search .ui-input-search {
+	background-image: none;
+	background-color: #fff;
+}
+
+.nearby {
+	h4.heading {
+		margin: 10px 0;
+	}
+}

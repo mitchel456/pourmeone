@@ -1,0 +1,19 @@
+<div class="item-header">
+  <a href="http://maps.google.com/maps?daddr=<%= @venue.full_address %>&saddr=" target="_blank" class="item-thumb">
+    <%= image_tag 'http://maps.googleapis.com/maps/api/staticmap?markers=color:red|' + @venue.latitude.to_s + ',' + @venue.longitude.to_s + '&scale=1&zoom=14&sensor=true&size=100x100&center=' + @venue.latitude.to_s + ',' + @venue.longitude.to_s %>
+  </a>
+  <h1 class="venue-name"><%= @venue.name %></h1>
+  <p class="yelp-ratings"><%= image_tag @venue.rating_image_url %><br />
+        <%= @venue.review_count %> Yelp Reviews<br />
+        <%= link_to 'Read Reviews', 'http://www.yelp.com/biz/' + @venue.yelp_id %></p>
+    <%= @venue.address %><br />
+    <%= @venue.city %>, <%= @venue.state %>
+  </p>
+</div>
+
+<div class="nearby">
+  <h4 class="heading">Cocktail Menu</h4>
+  <ul data-role="listview" data-inset="true" class="list">
+    <%= render partial: 'drinks/drink', collection: @venue.drinks, locals: { show_venue: false } %>
+  </ul>
+</div>

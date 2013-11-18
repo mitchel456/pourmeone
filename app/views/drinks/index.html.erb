@@ -1,0 +1,9 @@
+<div class="hero minisearch">
+  <%= search_form_for @search do |f| %>
+  <h4>What'll you have?</h4>
+  <%= f.search_field Drink.ransack_search_token, placeholder: 'Whiskey, Gin, Rum ...' %>
+  <%= f.submit 'Search', class: 'btn btn-warning' %>
+  <% end %>
+</div>
+
+<%= render partial: 'drinks/drink', collection: @drinks, locals: { show_venue: true } %>

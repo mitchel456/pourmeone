@@ -1,0 +1,13 @@
+<div class="jumbotron hero">
+  <%= search_form_for @search do |f| %>
+  <h2>What'll you have?</h2>
+  <%= f.search_field Drink.ransack_search_token, placeholder: 'Whiskey, Gin, Rum ...' %>
+  <% end %>
+</div>
+
+<div class="nearby">
+	<h4 class="heading">Nearby cocktails:</h4>
+	<ul data-role="listview" data-inset="true" class="list">
+	  <%= render partial: 'drinks/drink', collection: @drinks, locals: { show_venue: true } %>
+	</ul>
+</div>

@@ -1,3 +1,51 @@
 // Place all the styles related to the venues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ @mixin shadowed-box {
+	background-color: #fff;
+	box-shadow: 2px 2px 2px #ccc;
+	border: 1px solid #ccc;
+	padding: 10px;
+	h1, h2, h3, h4 {
+		margin-top: 0;
+	}
+}
+
+.drink {
+	@include shadowed-box;
+	clear: both;
+	.drink-image, .drink-details {
+		float: left;
+	}
+}
+
+h1.venue-name {
+	margin-top: 0;
+}
+
+.venue {
+	@include shadowed-box;
+	.venue-map {
+		padding: 10px;
+		border: 1px solid #ccc;
+	}
+	#map-canvas {
+		border: 1px solid #aaa;
+	}
+}
+
+div.nearby ul.list li {
+	margin: 5px 0;
+	min-height: 90px;
+	img.ui-li-thumb {
+		padding: 3px;
+		border: 1px solid #ddd;
+	}
+	p {
+		margin-top: 0.4em;
+	}
+	.ui-btn-inner a.ui-link-inherit {
+		padding-top: 0.5em;
+	}
+}

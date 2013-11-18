@@ -1,0 +1,17 @@
+<div class="drink clearfix">
+  <div class="drink-image">
+    <a href="#" class="thumbnail">
+      <% unless drink.filepicker_url.blank? %>
+      <%= filepicker_image_tag drink.filepicker_url, w: 80, h: 80, fit: 'crop' %>
+      <% else %>
+        <%= image_tag('default_drink.png') %>
+      <% end %>
+    </a>
+  </div>
+  <div class="drink-details">
+    <h4 class="name"><%= drink.name %><%= link_to ' - ' + drink.venue.name, drink.venue if show_venue%></h4>
+      <p class="ingredients"><%= drink.ingredients.pluck(:name).join(', ') %></p>
+      <p><%= number_to_currency drink.price, precision: 0 %></p>
+    </a>
+  </div>
+</div>

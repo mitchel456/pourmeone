@@ -24,6 +24,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 
 gem 'geocoder'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # Use postgres as the database for Active Record
 gem 'pg'

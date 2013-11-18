@@ -10,4 +10,12 @@
  *
  *= require_self
  *= require_tree .
+ *= require pourmeone
  */
+
+ body {
+	background-color: #F4F1D7;
+	font-size: 12px;
+	color: #333;
+	font-family: Verdana, sans-serif;
+ }

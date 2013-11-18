@@ -34,5 +34,25 @@ div.ui-content a.item-thumb {
     font-size: 12px;
     font-style: italic;
     font-weight: normal;
+    white-space: normal;
   }
+}
+
+.drink {
+  margin: 10px 0;
+  .thumbnail {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+  .drink-image img {
+    height: 80px;
+    width: 80px;
+  }
+  .drink-details {
+    width: calc(100% - 120px);
+  }
+}
+
+.hero.minisearch h4 {
+  margin-top: 0;
 }

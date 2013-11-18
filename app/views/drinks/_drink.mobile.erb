@@ -1,5 +1,5 @@
 <li class="drink-row">
-  <a href="/drinks/<%= drink.id %>">
+  <a href="<%= url_for drink.venue %>">
     <% unless drink.filepicker_url.blank? %>
     <%= filepicker_image_tag drink.filepicker_url, w: 80, h: 80, fit: 'crop' %>
     <% else %>
@@ -7,11 +7,14 @@
     <% end %>
     <h3 class="name"><%= drink.name %></h3>
     <% if show_venue %>
-    <h4 class="venue">
-      <%= drink.venue.name if drink.venue %>
-      <%= '(' + "%.1f" % drink.distance + ' miles away)' if drink.distance %>
-    </h4>
-     <% end %>
+      <h4>
+        <%= drink.venue.name if drink.venue %>
+      </h4>
+      <% if drink.distance %>
+        <p><%= "%.1f" % drink.distance + ' miles' %></p>
+      <% end %>
+    <% end %>
     <p class="ingredients"><%= drink.ingredients.pluck(:name).join(', ') %></p>
+    <p><%= number_to_currency drink.price, precision: 0 %></p>
   </a>
 </li>

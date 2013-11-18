@@ -1,0 +1,14 @@
+<div class="col-sm-6 col-md-4 venue-detail">
+	<div class="inner clearfix">
+		<a href="<%= venue_url(venue) %>" class="thumbnail">
+			<img src="<%= venue.image_url %>" alt="<%= venue.name %>" />
+		</a>
+		<div class="caption">
+			<a href="<%= venue_url(venue) %>"><h4><%= venue.name %></h4></a>
+			<p><%= venue.address %></p>
+			<p class="yelp-ratings"><%= image_tag venue.rating_image_url %><br />
+				<%= venue.review_count %> Yelp Reviews<br />
+				<%= link_to 'Read Reviews', 'http://www.yelp.com/biz/' + venue.yelp_id %></p>
+		</div>
+	</div>
+</div>

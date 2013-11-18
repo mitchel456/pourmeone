@@ -1,17 +1,13 @@
-<div class="jumbotron">
-  <h2>Step up to the bar!</h2>
+<div class="jumbotron hero">
   <%= search_form_for @search do |f| %>
-  <p>What'll you have?</p>
+  <h2>What'll you have?</h2>
   <%= f.search_field Drink.ransack_search_token, placeholder: 'Whiskey, Gin, Rum ...' %>
   <% end %>
 </div>
 
-
-
-<h4>Nearby venues:<%= image_tag 'Powered_By_Yelp_Black.png', style: 'float:right' %></h4>
-
-<div style="padding-top:15px">
-  <ul id="venue-list"></ul>
+<div class="nearby">
+  <h4 class="heading">Nearby venues:</h4>
+  <ul id="venue-list" class="list" data-inset="true"></ul>
 </div>
 
 <script>

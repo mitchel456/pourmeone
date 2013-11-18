@@ -1,0 +1,24 @@
+<div class="hero clearfix">
+  <div class="search">
+    <h2>Step up to the bar!</h2>
+    <%= search_form_for @search do |f| %>
+    <h4>What'll you have?</h4>
+    <%= f.search_field Drink.ransack_search_token, placeholder: 'Whiskey, Gin, Rum ...' %>
+    <%= f.submit 'Search', class: 'btn btn-warning' %>
+    <% end %>
+  </div>
+  <div class="description">
+    <p>Cocktail lover? Pour Me One helps you find the very best drinks in your neighborhood. Lots of sites give you recipes, but Pour Me One will direct you to the bar where mixologists do it best. Whether it's a Manhattan or a Martini, search by ingredient to find the perfect drink for your night out.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="venue-heading">
+  <h4>Nearby venues: <%= link_to 'http://www.yelp.com' do %>
+  <%= image_tag 'Powered_By_Yelp_Black.png', style: 'float:right' %>
+<% end %></h4>
+</div>
+  <%= render partial: "venues/venue", collection: @venues %>
+</div>
+
+<%= will_paginate @venues, renderer: BootstrapPagination::Rails %>

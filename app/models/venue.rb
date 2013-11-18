@@ -26,6 +26,14 @@ class Venue < ActiveRecord::Base
     attributes['rating_image_url']
   end
 
+  def review_count
+    unless attributes['review_count']
+      @yelp_data ||= get_yelp_data
+      update_attribute('review_count', @yelp_data['review_count'])
+    end
+    attributes['review_count']
+  end
+
   private
   def get_yelp_data
     consumer = OAuth::Consumer.new(ENV['YELP_CONSUMER_KEY'], ENV['YELP_CONSUMER_SECRET'], {:site => "http://api.yelp.com"})
