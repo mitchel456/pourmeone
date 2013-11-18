@@ -26,6 +26,7 @@ gem 'aws-sdk'
 gem 'geocoder'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'newrelic_rpm'
 
 # Use postgres as the database for Active Record
 gem 'pg'
