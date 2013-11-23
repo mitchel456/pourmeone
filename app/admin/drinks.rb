@@ -20,10 +20,7 @@ ActiveAdmin.register Drink do
       @drink = Drink.create(permitted_params[:drink])
       permitted_params[:ingredients].each do |drink_ingredient|
         if drink_ingredient[:id].empty?
-          ingredient = Ingredient.find_by_name(drink_ingredient[:name])
-          if ingredient.nil?
-            ingredient = Ingredient.create(name: drink_ingredient[:name])
-          end
+          ingredient = Ingredient.find_or_create_by(name: drink_ingredient[:name])
         else
           ingredient = Ingredient.find(drink_ingredient[:id])
         end
